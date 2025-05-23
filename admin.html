@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Home Page -->
+        <div id="home-page" class="home-page">
+            <header>
+                <div class="nav">
+                    <h1><i class="fas fa-graduation-cap"></i> ExamPro</h1>
+                    <div class="nav-links">
+                        <a href="#" id="student-login-btn">Student Login</a>
+                        <a href="#" id="admin-login-btn">Admin Login</a>
+                    </div>
+                </div>
+                <h1>Welcome to Online Exam System</h1>
+                <p>Test your knowledge and track your progress with our comprehensive exam platform</p>
+                <button id="get-started-btn" class="btn btn-primary">Get Started</button>
+            </header>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-clock"></i>
+                    <h3>Timed Exams</h3>
+                    <p>Real-time exam experience with countdown timer to simulate actual test conditions.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Detailed Results</h3>
+                    <p>Comprehensive result analysis showing your strengths and areas for improvement.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-database"></i>
+                    <h3>Question Bank</h3>
+                    <p>Large collection of questions covering various topics and difficulty levels.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Authentication Page (Login/Register) -->
+        <div id="auth-page" class="auth-page">
+            <div class="card">
+                <div class="auth-tabs">
+                    <div id="login-tab" class="auth-tab active">Login</div>
+                    <div id="register-tab" class="auth-tab">Register</div>
+                </div>
+                
+                <div id="login-form">
+                    <div class="form-group">
+                        <label for="login-username">Username</label>
+                        <input type="text" id="login-username" class="form-control" placeholder="Enter your username">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" class="form-control" placeholder="Enter your password">
+                    </div>
+                    <button id="login-btn" class="btn btn-primary">Login</button>
+                    <div id="login-error" class="error-message"></div>
+                </div>
+                
+                <div id="register-form" style="display: none;">
+                    <div class="form-group">
+                        <label for="register-username">Username</label>
+                        <input type="text" id="register-username" class="form-control" placeholder="Choose a username">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" class="form-control" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" class="form-control" placeholder="Choose a password">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm-password">Confirm Password</label>
+                        <input type="password" id="register-confirm-password" class="form-control" placeholder="Confirm your password">
+                    </div>
+                    <button id="register-btn" class="btn btn-success">Register</button>
+                    <div id="register-error" class="error-message"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Admin Panel -->
+        <div id="admin-page" class="admin-panel">
+            <header>
+                <div class="nav">
+                    <h1><i class="fas fa-user-shield"></i> Admin Panel</h1>
+                    <div class="nav-links">
+                        <a href="#" id="admin-home-btn"><i class="fas fa-home"></i> Home</a>
+                        <a href="#" id="change-password-btn"><i class="fas fa-key"></i> Change Password</a>
+                        <a href="#" id="admin-logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="password-change" id="password-change">
+                <h3>Change Password</h3>
+                <div class="form-group">
+                    <label for="current-password">Current Password</label>
+                    <input type="password" id="current-password" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="new-password">New Password</label>
+                    <input type="password" id="new-password" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="confirm-new-password">Confirm New Password</label>
+                    <input type="password" id="confirm-new-password" class="form-control">
+                </div>
+                <button id="update-password-btn" class="btn btn-primary">Update Password</button>
+                <button id="cancel-password-btn" class="btn btn-secondary">Cancel</button>
+                <div id="password-change-error" class="error-message"></div>
+                <div id="password-change-success" class="success-message"></div>
+            </div>
+            
+            <div class="card settings-card">
+                <h2>Exam Settings</h2>
+                <div class="form-group">
+                    <label for="exam-duration">Exam Duration (minutes):</label>
+                    <input type="number" id="exam-duration" class="form-control" value="30" min="1">
+                </div>
+                <button id="save-settings-btn" class="btn btn-primary">Save Settings</button>
+                <div id="settings-message" class="info-message"></div>
+            </div>
+            
+            <div class="card">
+                <h2>Add New Question</h2>
+                <form id="question-form">
+                    <div class="form-group">
+                        <label for="question">Question:</label>
+                        <textarea id="question" class="form-control" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Options:</label>
+                        <input type="text" id="option1" class="form-control" placeholder="Option 1" required>
+                        <input type="text" id="option2" class="form-control" placeholder="Option 2" required>
+                        <input type="text" id="option3" class="form-control" placeholder="Option 3" required>
+                        <input type="text" id="option4" class="form-control" placeholder="Option 4" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="correct-answer">Correct Answer:</label>
+                        <select id="correct-answer" class="form-control" required>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                            <option value="4">Option 4</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Add Question</button>
+                </form>
+            </div>
+            
+            <div class="card">
+                <h2>Existing Questions</h2>
+                <div id="questions-list" class="questions-list">
+                    <!-- Questions will be loaded here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Exam Page -->
+        <div id="exam-page" class="exam-page">
+            <header>
+                <div class="nav">
+                    <h1><i class="fas fa-pencil-alt"></i> Online Exam</h1>
+                    <div class="nav-links">
+                        <a href="#" id="exam-home-btn"><i class="fas fa-home"></i> Home</a>
+                        <a href="#" id="exam-logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <div class="timer">Time Left: <span id="time">30:00</span></div>
+            </header>
+            
+            <div class="card">
+                <div id="exam-container">
+                    <div id="question-container">
+                        <!-- Questions will be loaded here -->
+                    </div>
+                    
+                    <div class="navigation">
+                        <button id="prev-btn" class="btn btn-secondary">Previous</button>
+                        <button id="next-btn" class="btn btn-secondary">Next</button>
+                        <button id="submit-btn" class="btn btn-success">Submit Exam</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Results Page -->
+        <div id="result-page" class="result-page">
+            <header>
+                <div class="nav">
+                    <h1><i class="fas fa-chart-line"></i> Exam Results</h1>
+                    <div class="nav-links">
+                        <a href="#" id="retake-exam-btn"><i class="fas fa-redo"></i> Retake Exam</a>
+                        <a href="#" id="result-home-btn"><i class="fas fa-home"></i> Home</a>
+                        <a href="#" id="result-logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="card result-card">
+                <h2>Your Score</h2>
+                <div class="score" id="score">0</div>
+                <div class="total-questions" id="total-questions">out of 0 questions</div>
+                <div class="percentage" id="percentage">0%</div>
+            </div>
+            
+            <div class="card">
+                <h3>Detailed Results</h3>
+                <div id="answers-list">
+                    <!-- Answers will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
